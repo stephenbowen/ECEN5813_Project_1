@@ -61,7 +61,7 @@ OBJS = main.o project1.o memory.o conversion.o debug.o data.o endian.o
 
 .PHONY: clean
 clean:
-	rm -f *.o *.i *.asm
+	rm -f *.o *.i *.asm *.elf
 	rm -r .d
 
 #Targets

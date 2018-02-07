@@ -251,7 +251,7 @@ int32_t *reserve_words(size_t length)
 
   @return void
 */
-uint_8 free_words(uint32_t *src)
+uint8_t free_words(uint32_t *src)
 {
   free(src);
 

@@ -88,4 +88,4 @@ int32_t *reserve_words(size_t);
 
   @return void
 */
-uint_8 free_words(uint32_t *);
+uint8_t free_words(uint32_t *);

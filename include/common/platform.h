@@ -14,8 +14,8 @@
   a host machine or the Beagle Bone Black board.
 */
 #ifdef HOST
-  #define PRINTF(a, b) \
-    printf("size of %s = %d\n", a, b);
+  #define PRINTF(...) \
+    printf(__VA_ARGS__);
 #endif
 
 #ifdef BBB

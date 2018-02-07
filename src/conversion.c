@@ -1,16 +1,37 @@
-/*This function takes in a 32 bit data intiger, an integer pointer, and a base.
+/*
+  @file conversion.c  
+  @brief This file is used to convert integers to ASCII and vice versa
+
+  The file consists of two functions: itoa() and atoi().  itoa() takes in an 
+  integer value and outputs the ASCII equivalent of that value.  atoi() takes
+  in an ASCII value and converts it to an integer.
+
+  @author Stephen Bowern
+  @date Jan 30, 2018
+*/
+
+#include <stdio.h>
+#include <stdint.h>
+#include <conversion.h>
+
+/*
+  @brief This function converts an integer value to an ASCII value
+
+  This function takes in a 32 bit data intiger, an integer pointer, and a base.
   The function converts the integer data to ASCII with respect to the base, and 
   assigns that ASCII string to the pointer.  The function returns an integer
   representing the number of the ASCII characters assigned, including negative
   sign and null terminator.
+
+  @return uint8_t
 */
-uint8_t *my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
+uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
 {
   const uint8_t MAX = 34;   /*max string length: 32 binary values 
                              + negative sign + null terminator*/
   uint32_t udata = data;    /*temp unsigned data value storage*/
   uint8_t temp[MAX];        /*temp array to the modulus of the data*/
-  uint8_t *tptr = temp      /*pointer to temp array*/
+  uint8_t *tptr = temp;     /*pointer to temp array*/
   uint8_t *origin;          /*pointer to the origin of the destination address*/
   origin = ptr;
   uint8_t count = 0;        /*counts upa and down an integer array*/
@@ -21,7 +42,8 @@ uint8_t *my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
   */
   if(data < 0)
   {
-    ptr++ = 45;
+    *ptr = 45;
+    ptr++;
     udata = data * -1;
     total++;            /*adds one to total for negative sign*/
   }
@@ -62,7 +84,17 @@ uint8_t *my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
   return total;
 }
 
-int32_t my_atoi(uint8_t *ptr, uint8_t digits, uint32_t base);
+/*
+  @brief This function converts an ASCII value to an integer value
+
+  This function takes in an integer pointer (pointing to the ASCII data), an
+  integer representing the number of digits being input, and a base.
+  The function converts the ASCII data to an integer with respect to the base,
+  and then returns that value as a 32 bit signed integer.
+
+  @return uint32_t
+*/
+int32_t my_atoi(uint8_t *ptr, uint8_t digits, uint32_t base)
 {
   uint8_t isneg = 0;            /*true if the input value is negative*/
   uint8_t temp[digits];
@@ -80,9 +112,10 @@ int32_t my_atoi(uint8_t *ptr, uint8_t digits, uint32_t base);
   {
     isneg = 1;    
     ptr++;
-    realdigits--;     /*remove the negative sign from the real digits count*/
+    realdigits--;    /*remove the negative sign from the real digits count*/
   }
-  real digits--;      /*remove the null terminator from the real digits count*/
+  realdigits--;      /*remove the null terminator from the real digits count*/
+  isneg *= 1;        /*performing arbirary operation to avoid compile warning*/
 
   /*convert ASCII characters to integer numbers and assign them to an array*/
   while(*ptr != '\0')

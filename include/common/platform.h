@@ -14,11 +14,13 @@
   a host machine or the Beagle Bone Black board.
 */
 #ifdef HOST
-  #define PRINTF(...) \
-    printf(__VA_ARGS__);
+  #define PRINTF printf
 #endif
 
 #ifdef BBB
-  #define PRINTF(a, b) \
-    printf("size of %s = %d\n", a, b);
+  #define PRINTF printf
+#endif
+
+#ifdef KL25Z
+  #define PRINTF //
 #endif

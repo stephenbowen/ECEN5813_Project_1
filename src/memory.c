@@ -83,7 +83,7 @@ uint8_t *my_memmove(uint8_t *src, uint8_t *dst, size_t length)
 
   @return uint8_t *
 */
-uint8_t *my_memcopy(uint8_t *src, uint8_t *dst, size_t length)
+uint8_t *my_memcpy(uint8_t *src, uint8_t *dst, size_t length)
 {
 
   uint8_t count = 0;             /*counts up and down the memory addresses*/

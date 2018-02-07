@@ -32,7 +32,7 @@ uint8_t *my_memmove(uint8_t *, uint8_t *, size_t);
 
   @return uint8_t *
 */
-uint8_t *my_memcopy(uint8_t *, uint8_t *, size_t);
+uint8_t *my_memcpy(uint8_t *, uint8_t *, size_t);
 
 /*
   @brief This function sets number of data values to a given value.

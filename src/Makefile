@@ -5,7 +5,7 @@
 ifeq ($(PLATFORM), HOST)
   CPU = cortex-m4
   CC = gcc
-	CFLAGS   = -g -Wall -Werror -std=c99 -O0
+	CFLAGS   = -g -Wall -Werror -std=c99 -O0 -DVERBOSE
 	CPPFLAGS = -DHOST
   SRCS = ./conversion.c \
          ./data.c       \
@@ -26,12 +26,11 @@ else ifeq ($(PLATFORM), BBB)
          ./main.c       \
          ./memory.c 
 
-#else ifeq ($(PLATFORM), KL25Z)
-#else
+else ifeq ($(PLATFORM), KL25Z)
   CPU = cortex-m0plus
   CC = arm-linux-gnueabi-gcc
 	CFLAGS   = -g -Wall -Werror -std=c99 -O0 -march=$(CPU)
-	CPPFLAGS = =DKL25Z
+	CPPFLAGS = =-DKL25Z
   SRCS = ./conversion.c      \
          ./data.c            \
          ./debug.c           \

@@ -10,6 +10,7 @@
 */
 
 #include <stdio.h>
+#include "project1.h"
 
 /*
   @brief This function calls other functions for the purpose of tesing.
@@ -22,9 +23,9 @@
 */
 int main()
 {
-  #ifdef PROJECT1
-    test_memmove1();
-  #endif
+//  #ifdef PROJECT1
+    test_data1();
+//  #endif
 
   return 0;
 }

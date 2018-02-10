@@ -231,14 +231,14 @@ int32_t *reserve_words(size_t length)
 
   address = (int32_t*) malloc(length); /*allocate memory of 'length' size and
                                          assign pointer to memory to address*/
-
+printf("***ADDRESS %p\n", address);
   return address;                      /*return memory address or NULL*/
 }
 
 /*
   @brief This function frees previously allocated memory.
 
-  This function takes in a pointer to a memory location.  It then frees the
+  This function takes inmemmove1 a pointer to a memory location.  It then frees the
   the memory that was previosly dynamically allocated.  The function returns
   nothing.
 
@@ -249,7 +249,7 @@ uint8_t free_words(uint32_t *src)
   /*check for invalid pointer*/
   if(src == NULL)
     return ERROR;
-
+printf("***ADDRESS %p\n", src);
   free(src);
 
   return 0;

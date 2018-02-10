@@ -134,7 +134,7 @@ int8_t test_memmove2() {
 
   PRINTF("test_memmove2() -OVERLAP END OF SRC BEGINNING OF DST\n");
   set = (uint8_t*) reserve_words(MEM_SET_SIZE_W);
-
+printf("***ADDRESS %p\n", set);
   if (! set )
   {
     return TEST_ERROR;
@@ -158,7 +158,7 @@ int8_t test_memmove2() {
       ret = TEST_ERROR;
     }
   }
-
+printf("***ADDRESS %p\n", set);
   free_words( (uint32_t*)set );
   return ret;
 }

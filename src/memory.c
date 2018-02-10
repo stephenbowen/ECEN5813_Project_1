@@ -229,7 +229,7 @@ int32_t *reserve_words(size_t length)
 {
   int32_t *address;                    /*declare 32bit pointer to address*/
 
-  address = (int32_t*) malloc(length+1); /*allocate memory of 'length' size and
+  address = (int32_t*) malloc(sizeof(length)); /*allocate memory of 'length' size and
                                          assign pointer to memory to address*/
 printf("***ADDRESS %p\n", address);
   return address;                      /*return memory address or NULL*/

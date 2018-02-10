@@ -24,7 +24,7 @@
 int main()
 {
   #ifdef PROJECT1
-    test_memmove3();
+    test_memmove2();
   #endif
 
   return 0;

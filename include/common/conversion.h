@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <stdint.h>
 
+#define ERROR 1
+
 /*
   @brief This function converts an integer value to an ASCII value
 

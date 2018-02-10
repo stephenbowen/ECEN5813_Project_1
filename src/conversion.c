@@ -32,7 +32,16 @@ uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
    uint8_t isneg = 0;        /*tracks the sign of the integer*/
    uint8_t *origin;
    origin = ptr;
-  
+
+  /*check for invalid pointer*/
+  if(ptr == NULL)
+    return ERROR;
+
+  /*check for invalid base*/
+  if(base < 2 || base > 16)
+    return ERROR;
+
+  /*check if the integer is negative*/
   if(data < 0)
   {
     isneg = 1;          /*integer is recognizes as negative*/
@@ -102,6 +111,14 @@ int32_t my_atoi(uint8_t *ptr, uint8_t digits, uint32_t base)
 {
   int8_t isneg = 1;          /*1 if the input value is negative, -1 otherwise*/
   int32_t result = 0;
+
+  /*check for invalid pointer*/
+  if(ptr == NULL)
+    return ERROR;
+
+  /*check for invalid base*/
+  if(base < 2 || base > 16)
+    return ERROR;
 
   /*check if the number is negative*/
   if(*ptr == '-')

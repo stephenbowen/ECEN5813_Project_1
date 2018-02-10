@@ -26,6 +26,10 @@ void print_array(uint8_t *start, uint32_t length)
 {
   uint8_t *ptr = start;
 
+  /*check for invalid pointer*/
+  if(start == NULL)
+    return;
+
   for(uint8_t x = 0 ; x < length ; x++)
   {
     printf("%X ", *ptr);

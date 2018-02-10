@@ -23,7 +23,8 @@ else ifeq ($(PLATFORM), KL25Z)
   CPU = cortex-m0plus
   CC = arm-none-eabi-gcc
 	CFLAGS   =--specs=nosys.specs -g -Wall -Werror -std=c99 -O0 \
-             -march=armv6-m -mthumb
+             -march=armv6-m -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 \
+             -mcpu=cortex-m0plus
 	CPPFLAGS = -DKL25Z -DPROJECT1
 	INCLUDES = -I./../include/common \
              -I./../include/CMSIS \
@@ -49,7 +50,11 @@ OBJS = main.o project1.o memory.o conversion.o debug.o data.o endian.o
 #Targets
 .PHONY: clean
 clean:
-	rm -f *.o *.i *.asm *.elf *.i *.dep *.s *.map
+	rm -f *.o *.i *.asm *.elf *.dep *.s *.map
+
+.PHONY: size
+size:
+	size *.o *.elf
 
 .PHONY: build
 build: $(TARGET_ELF)

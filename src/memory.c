@@ -36,6 +36,10 @@ uint8_t *my_memmove(uint8_t *src, uint8_t *dst, size_t length)
   uint8_t *ptr = temp;       /*pointer to temp*/
   uint8_t count = 0;         /*counts up and down the temporary data array*/
 
+  /*check for invalid pointer*/
+  if(src == NULL || dst == NULL)
+    return (uint8_t *) ERROR;
+
   /*copy source data into a temporary array*/
   while(count < length)
   {
@@ -77,6 +81,10 @@ uint8_t *my_memcpy(uint8_t *src, uint8_t *dst, size_t length)
 
   uint8_t count = 0;             /*counts up and down the memory addresses*/
 
+  /*check for invalid pointer*/
+  if(src == NULL || dst == NULL)
+    return (uint8_t *) ERROR;
+
   /*copy source data into destination addresses*/
   while(count < length)
   {
@@ -103,6 +111,10 @@ uint8_t *my_memset(uint8_t *src, size_t length, uint8_t value)
 {
 
   uint8_t count = 0;             /*counts up and down the memory addresses*/
+
+  /*check for invalid pointer*/
+  if(src == NULL)
+    return (uint8_t *) ERROR;
 
   /*copy data value into source addresses*/
   while(count <= length)
@@ -136,6 +148,10 @@ uint8_t *my_memzero(uint8_t *src, size_t length)
 
   uint8_t count = 0;             /*counts up and down the memory addresses*/
 
+  /*check for invalid pointer*/
+  if(src == NULL)
+    return (uint8_t *) ERROR;
+
   /*write 0 into source addresses*/
   while(count < length)
   {
@@ -162,6 +178,10 @@ uint8_t *my_reverse(uint8_t *src, size_t length)
   uint8_t count = 0;                 /*counts up and down the array*/
   uint8_t temp[length];             /*tempoary storage for coppied array*/
   uint8_t *ptr = temp;              /*pointer to temporary array*/
+
+  /*check for invalid pointer*/
+  if(src == NULL)
+    return (uint8_t *) ERROR;
 
   /*copy source into temp*/
   while(count < length)
@@ -226,6 +246,10 @@ int32_t *reserve_words(size_t length)
 */
 uint8_t free_words(uint32_t *src)
 {
+  /*check for invalid pointer*/
+  if(src == NULL)
+    return ERROR;
+
   free(src);
 
   return 0;

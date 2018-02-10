@@ -10,6 +10,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#define ERROR 1
+
 /*
   @brief This function copies data to a specified address.
 

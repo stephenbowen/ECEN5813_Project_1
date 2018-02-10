@@ -52,7 +52,7 @@ OBJS = main.o project1.o memory.o conversion.o debug.o data.o endian.o
 #Targets
 .PHONY: clean
 clean:
-	rm -f *.o *.i *.asm *.elf
+	rm -f *.o *.i *.asm *.elf *.i
 	rm -r .d
 
 .PHONY: build
@@ -65,9 +65,29 @@ compile-all: $(OBJS)
 $(OBJS): $(SRCS)
 	$(CC)  $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(LDFLAGS) $(SPECS) $(DEPFLAGS) -c $@ $^
 
-main.i: main.c
-	gcc -E $(INCLUDES) main.c
+#Preprocessed Output File Targes
+memory.i: memory.c
+	gcc $(INCLUDES) -E -o $@ $<
 
+conversion.i: conversion.c
+	gcc $(INCLUDES) -E -o $@ $<
+
+debug.i: debug.c
+	gcc $(INCLUDES) -E -o $@ $<
+
+data.i: data.c
+	gcc $(INCLUDES) -E -o $@ $<
+
+endian.i: endian.c
+	gcc $(INCLUDES) -E -o $@ $<
+
+project1.i: project1.c
+	gcc $(INCLUDES) -E -o $@ $<
+
+main.i: main.c
+	gcc $(INCLUDES) -E -o $@ $<
+
+#Object File Targets
 memory.o: memory.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(LDFLAGS) $(DEPFLAGS) -c -o $@ $<
 
@@ -88,6 +108,3 @@ project1.o: project1.c
 
 main.o: main.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(LDFLAGS) $(DEPFLAGS) -c -o $@ $<
-
-
-  

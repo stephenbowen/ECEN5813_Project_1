@@ -12,7 +12,7 @@ ifeq ($(PLATFORM), HOST)
 
 else ifeq ($(PLATFORM), BBB)
   CPU = cortex-m4
-  CC = arm-linux-gnueabi-gcc
+  CC = arm-linux-gnueabihf-gcc
 	CFLAGS   = -g -Wall -Werror -std=c99 -O0
 	CPPFLAGS = -DBBB -DPROJECT1
 	INCLUDES = -I./../include/common \

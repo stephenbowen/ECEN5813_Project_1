@@ -249,7 +249,7 @@ uint8_t free_words(uint32_t *src)
   /*check for invalid pointer*/
   if(src == NULL)
     return ERROR;
-printf("***ADDRESS %p\n", );
+printf("***ADDRESS %p\n", src);
   free(src);
 
   return 0;

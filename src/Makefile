@@ -6,7 +6,7 @@ ifeq ($(PLATFORM), HOST)
   CPU = cortex-m4
 	CC = gcc
 	CFLAGS   = -g -Wall -Werror -std=c99 -O0 -DVERBOSE
-	CPPFLAGS = -DHOST
+	CPPFLAGS = -DHOST -DPROJECT1
   INCLUDES = -I./../include/common
 	LDFLAGS  = -Xlinker -Map=project1.map
 
@@ -14,7 +14,7 @@ else ifeq ($(PLATFORM), BBB)
   CPU = cortex-m4
   CC = arm-linux-gnueabihf-gcc
 	CFLAGS   = -g -Wall -Werror -std=c99 -O0
-	CPPFLAGS = -DBBB
+	CPPFLAGS = -DBBB -DPROJECT1
 	INCLUDES = -I./../include/common \
              -I./../include/CMSIS
 	LDFLAGS  = -Xlinker -Map=project1.map
@@ -24,7 +24,7 @@ else ifeq ($(PLATFORM), KL25Z)
   CC = arm-none-eabi-gcc
 	CFLAGS   =--specs=nosys.specs -g -Wall -Werror -std=c99 -O0 \
              -march=armv6-m -mthumb
-	CPPFLAGS = -DKL25Z
+	CPPFLAGS = -DKL25Z -DPROJECT1
 	INCLUDES = -I./../include/common \
              -I./../include/CMSIS \
              -I./../include/kl25z

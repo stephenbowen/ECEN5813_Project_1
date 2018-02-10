@@ -23,9 +23,9 @@
 */
 int main()
 {
-//  #ifdef PROJECT1
+  #ifdef PROJECT1
     test_data1();
-//  #endif
+  #endif
 
   return 0;
 }

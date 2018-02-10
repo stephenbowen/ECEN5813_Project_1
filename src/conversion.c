@@ -27,12 +27,13 @@
 */
 uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
 {
+
    uint8_t total = 0;        /*counts the total number of ASCII values*/
    uint8_t isneg = 0;        /*tracks the sign of the integer*/
    uint8_t *origin;
    origin = ptr;
   
-  if(data < 0 && base == 10)
+  if(data < 0)
   {
     isneg = 1;          /*integer is recognizes as negative*/
     data *= -1;         /*turns data value to positive*/
@@ -41,13 +42,14 @@ uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
   /*assign null character, and increment pointer*/
   *ptr = '\0';
   ptr++;
+  total++;
 
   /*while the data is greater than 0, assign the modulus
     to the character array, and trucate the LSB of data
   */  
   while(data != 0)
   { 
-    uint8_t remainder = data % base;
+    uint32_t remainder = data % base;
 
     if(remainder > 9)
       remainder += ('A' - 10);
@@ -75,7 +77,7 @@ uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
 
   while(first < last)
   {
-    temp = *(ptr + first);
+    temp = *(ptr + last);
     *(ptr + last) = *(ptr + first);
     *(ptr + first) = temp;
 
@@ -98,7 +100,7 @@ uint8_t my_itoa(int32_t data, uint8_t *ptr, uint32_t base)
 */
 int32_t my_atoi(uint8_t *ptr, uint8_t digits, uint32_t base)
 {
-  uint8_t isneg = 1;          /*1 if the input value is negative, -1 otherwise*/
+  int8_t isneg = 1;          /*1 if the input value is negative, -1 otherwise*/
   int32_t result = 0;
 
   /*check if the number is negative*/
@@ -108,9 +110,10 @@ int32_t my_atoi(uint8_t *ptr, uint8_t digits, uint32_t base)
     ptr++;
   }
 
-  for(int x = 0 ; x != '\0' ; ++x)
+  for(uint8_t x = 0 ; *ptr != '\0' ; x++)
   {
-    result = result * 10 + *ptr;
+      result = result * base + *ptr - '0';
+
     ptr++;
   }
 

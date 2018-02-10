@@ -24,7 +24,7 @@
 int main()
 {
   #ifdef PROJECT1
-    test_data1();
+    project1();
   #endif
 
   return 0;

@@ -26,9 +26,9 @@ void print_array(uint8_t *start, uint32_t length)
 {
   uint8_t *ptr = start;
 
-  for(int x = 0 ; x < length ; x++)
+  for(uint8_t x = 0 ; x < length ; x++)
   {
-    printf("%X", *ptr);
+    printf("%X ", *ptr);
     ptr++;
   }
 

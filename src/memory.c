@@ -37,36 +37,25 @@ uint8_t *my_memmove(uint8_t *src, uint8_t *dst, size_t length)
   uint8_t count = 0;         /*counts up and down the temporary data array*/
 
   /*copy source data into a temporary array*/
-  while(count <= length)
+  while(count < length)
   {
     *ptr = *src;
     ptr++;
     src++;
+    dst++;
     count++;
   }
-
-  /*reset source and temp pointers*/
-  while(count > 0)
-  {
-    ptr--;
-    src--;
-    count--;
-  }
+  ptr--;
+  src--;
+  dst--;
 
   /*copy temporary array into destination address*/
-  while(count <= length)
-  {
-    *dst = *temp;
-    dst++;
-    ptr++;
-    count++;
-  }
-
-  /*reset destination and temp pointers*/
   while(count > 0)
   {
-    ptr--;
+    *dst = *ptr;
+    src--;
     dst--;
+    ptr--;
     count--;
   }
 
@@ -89,19 +78,12 @@ uint8_t *my_memcpy(uint8_t *src, uint8_t *dst, size_t length)
   uint8_t count = 0;             /*counts up and down the memory addresses*/
 
   /*copy source data into destination addresses*/
-  while(count <= length)
+  while(count < length)
   {
     *dst = *src;
     src++;
+    dst++;
     count++;
-  }
-
-  /*reset source and destination pointers*/
-  while(count > 0)
-  {
-    src--;
-    dst--;
-    count--;
   }
 
   return dst;
@@ -155,18 +137,11 @@ uint8_t *my_memzero(uint8_t *src, size_t length)
   uint8_t count = 0;             /*counts up and down the memory addresses*/
 
   /*write 0 into source addresses*/
-  while(count <= length)
+  while(count < length)
   {
     *src = 0;
     src++;
     count++;
-  }
-
-  /*reset source pointer*/
-  while(count > 0)
-  {
-    src--;
-    count--;
   }
 
   return src;
@@ -184,39 +159,37 @@ uint8_t *my_memzero(uint8_t *src, size_t length)
 */
 uint8_t *my_reverse(uint8_t *src, size_t length)
 { 
-  int count = 0;                 /*counts up and down the array*/
-  char temp[length];             /*tempoary storage for coppied array*/
-  char *ptr = temp;              /*pointer to temporary array*/
+  uint8_t count = 0;                 /*counts up and down the array*/
+  uint8_t temp[length];             /*tempoary storage for coppied array*/
+  uint8_t *ptr = temp;              /*pointer to temporary array*/
 
-  /*move the temporary pointer to the end of the temporary array*/
+  /*copy source into temp*/
   while(count < length)
-  {
-    ptr++;
-    count++;
-  }
-
-  /*copy source into temp in reverse order*/
-  while(count >= 0)
   {
     *ptr = *src;
-    ptr--;
-    src++;
-    count--;
-  }
-  count++;
-
-  /*return pointer to last data address*/
-  while(count < length)
-  {
     ptr++;
+    src++;
     count++;
   }
-  
-  /*copy temp data back to source*/
-  while(count >= 0)
+  ptr--;
+
+  while(count > 0)
+  {
+    src--;
+    count--;
+  }
+
+  /*copy temp data back to source in reverse order*/
+  while(count < length)
   {
     *src = *ptr;
     ptr--;
+    src++;
+    count++;
+  }
+
+  while(count > 0)
+  {
     src--;
     count--;
   }

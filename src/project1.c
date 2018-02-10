@@ -198,7 +198,6 @@ int8_t test_memmove3() {
     }
   }
 
-
   free_words( (uint32_t*)set );
   return ret;
 
@@ -283,7 +282,7 @@ int8_t test_memset()
       ret = TEST_ERROR;
     }
   }
-  
+
   free_words( (uint32_t*)set );
   return ret;
 }

@@ -28,6 +28,8 @@ void print_cstd_type_sizes()
   size_t temp = 1;
   temp *= 1;        /*opearation to prevent compile error when print
                       statement not used for KL25Z*/
+  #if defined(__GNUC__)
+  #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 
   temp = sizeof(char);
   PRINTF("size of char = %d\n", temp);
@@ -64,6 +66,8 @@ void print_cstd_type_sizes()
 
   temp = sizeof(signed long);
   PRINTF("size of signed long = %d\n", temp);
+
+  #endif
 }
 
 /*
@@ -79,6 +83,8 @@ void print_stdint_type_sizes()
   size_t temp = 1;
   temp *= 1;        /*opearation to prevent compile error when print
                       statement not used for KL25Z*/
+  #if defined(__GNUC__)
+  #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 
   temp = sizeof(int8_t);
   PRINTF("size of int8_t = %d\n", temp);
@@ -121,6 +127,8 @@ void print_stdint_type_sizes()
 
   temp = sizeof(ptrdiff_t);
   PRINTF("size of ptrdiff_t = %d\n", temp);
+
+  #endif
 }
 
 /*
@@ -136,6 +144,8 @@ void print_pointer_sizes()
   size_t temp =1;
   temp *= 1;        /*opearation to prevent compile error when print
                       statement not used for KL25Z*/
+  #if defined(__GNUC__)
+  #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 
   temp = sizeof(char *);
   PRINTF("size of char * = %d\n", temp);
@@ -178,4 +188,6 @@ void print_pointer_sizes()
 
   temp = sizeof(ptrdiff_t);
   PRINTF("size of ptrdiff_t = %d\n", temp);
+
+  #endif
 }

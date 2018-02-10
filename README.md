@@ -12,7 +12,7 @@ the size of varous data tyes.  Functions in endian.c determine endianness and
 swap endianness.  The function in arch_arm32.c returns the endianness of the 
 architecture on which the code is run.
 
-Directions:
+DIRECTIONS:
 To set the functions to be tested, change the function call in the main.c file.
 The list of functions is contained in project1.c and project1.h.  
 
@@ -29,3 +29,19 @@ make clean
 To run the project executable, navigate to the src directory and run the 
 following command.
 ./project1.elf
+
+To generate the preprocessed output of the program implementation files,
+navigate to the src directory and run the following command.
+make <filename>.i
+
+To generate the assembly output of the program impilementation files,
+navigate to the src directory and run the following command.
+make <filename>.s
+
+To generate the object files from the program imiplementation files, navigate
+to the src directory and run the following command.
+make <filename>.o
+
+To compile all object files without linking, navigate to the src directory and
+run the following command.
+make compile-all

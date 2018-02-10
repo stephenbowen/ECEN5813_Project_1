@@ -52,7 +52,7 @@ OBJS = main.o project1.o memory.o conversion.o debug.o data.o endian.o
 #Targets
 .PHONY: clean
 clean:
-	rm -f *.o *.i *.asm *.elf *.i
+	rm -f *.o *.i *.asm *.elf *.i *.s
 	rm -r .d
 
 .PHONY: build
@@ -64,6 +64,28 @@ $(TARGET_ELF): $(OBJS)
 compile-all: $(OBJS)
 $(OBJS): $(SRCS)
 	$(CC)  $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(LDFLAGS) $(SPECS) $(DEPFLAGS) -c $@ $^
+
+#Assembly Output File Targes
+memory.s: memory.c
+	gcc $(INCLUDES) -S -o $@ $<
+
+conversion.s: conversion.c
+	gcc $(INCLUDES) -S -o $@ $<
+
+debug.s: debug.c
+	gcc $(INCLUDES) -S -o $@ $<
+
+data.s: data.c
+	gcc $(INCLUDES) -S -o $@ $<
+
+endian.s: endian.c
+	gcc $(INCLUDES) -S -o $@ $<
+
+project1.s: project1.c
+	gcc $(INCLUDES) -S -o $@ $<
+
+main.s: main.c
+	gcc $(INCLUDES) -S -o $@ $<
 
 #Preprocessed Output File Targes
 memory.i: memory.c

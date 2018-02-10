@@ -8,6 +8,7 @@ ifeq ($(PLATFORM), HOST)
 	CFLAGS   = -g -Wall -Werror -std=c99 -O0 -DVERBOSE
 	CPPFLAGS = -DHOST
   INCLUDES = -I./../include/common
+	LDFLAGS  = -Xlinker -Map=project1.map
 
 else ifeq ($(PLATFORM), BBB)
   CPU = cortex-m4
@@ -16,6 +17,7 @@ else ifeq ($(PLATFORM), BBB)
 	CPPFLAGS = -DBBB
 	INCLUDES = -I./../include/common \
              -I./../include/CMSIS
+	LDFLAGS  = -Xlinker -Map=project1.map
 
 else ifeq ($(PLATFORM), KL25Z)
   CPU = cortex-m0plus
@@ -26,7 +28,7 @@ else ifeq ($(PLATFORM), KL25Z)
 	INCLUDES = -I./../include/common \
              -I./../include/CMSIS \
              -I./../include/kl25z
-  LDFLAGS = 
+	LDFLAGS  = -Xlinker -Map=project1.map
 
 else
 	CC = gcc
@@ -52,7 +54,7 @@ OBJS = main.o project1.o memory.o conversion.o debug.o data.o endian.o
 #Targets
 .PHONY: clean
 clean:
-	rm -f *.o *.i *.asm *.elf *.i *.s
+	rm -f *.o *.i *.asm *.elf *.i *.s *.map
 	rm -r .d
 
 .PHONY: build

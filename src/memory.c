@@ -229,8 +229,9 @@ int32_t *reserve_words(size_t length)
 {
   int32_t *address;                    /*declare 32bit pointer to address*/
 
-  address = (int32_t*) malloc(length); /*allocate memory of 'length' size and
-                                         assign pointer to memory to address*/
+  address = (int32_t*) malloc(length * 4); /*allocate memory of 'length' size
+                                             andassign pointer to memory to
+                                             address*/
 
   return address;                      /*return memory address or NULL*/
 }

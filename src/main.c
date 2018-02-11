@@ -24,7 +24,7 @@
 int main()
 {
   #ifdef PROJECT1
-    test_memcpy();
+    project1();
   #endif
 
   return 0;

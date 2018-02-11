@@ -250,7 +250,7 @@ uint8_t free_words(uint32_t *src)
   if(src == NULL)
     return ERROR;
 
-  free(src);
+  free((uint32_t *) src);
 
   return 0;
 }

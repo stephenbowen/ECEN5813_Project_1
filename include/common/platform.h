@@ -23,4 +23,7 @@
 
 #ifdef KL25Z
   #define PRINTF(x,...) (void)0
+
+#else
+  #define PRINTF(x,...) (void)0
 #endif
